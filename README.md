@@ -4,7 +4,9 @@
 
 本工程是对 https://github.com/zxing/zxing 的再次简单化的封装。
 
-本工程只包含 zxing 的两个子工程（core、javase）
+本工程只包含 zxing 的两个子工程（core、javase）。
+
+本工程的版本，即是封装zxing的版本。
 
 
 
