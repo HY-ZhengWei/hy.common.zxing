@@ -8,6 +8,7 @@
 
 
 
+代码举例
 ```java
 // 生成二维码
 ZXingHelp.encodeToFile(BarcodeFormat.QR_CODE  ,"/Users/hy/Downloads/zxing2D.png" ,"http://www.baidu.com" ,300 ,300);
