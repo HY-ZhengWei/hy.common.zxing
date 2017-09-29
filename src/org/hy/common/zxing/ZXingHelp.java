@@ -317,13 +317,12 @@ public final class ZXingHelp
      * @createDate  2017-09-29
      * @version     v1.0
      *
-     * @param i_BarcodeFormat  二维码、条形码的编码格式
      * @param i_ImageFile      二维码、条形码的文件
      * @return
      */
-    public final static String decode(BarcodeFormat i_BarcodeFormat ,String i_ImageFile)
+    public final static String decode(String i_ImageFile)
     {
-        return decode(i_BarcodeFormat ,new File(i_ImageFile) ,$DefaultCharacter);
+        return decode(new File(i_ImageFile) ,$DefaultCharacter);
     }
     
     
@@ -335,14 +334,13 @@ public final class ZXingHelp
      * @createDate  2017-09-29
      * @version     v1.0
      *
-     * @param i_BarcodeFormat  二维码、条形码的编码格式
      * @param i_ImageFile      二维码、条形码的文件
      * @param i_Character      字符格式
      * @return
      */
-    public final static String decode(BarcodeFormat i_BarcodeFormat ,String i_ImageFile ,String i_Character)
+    public final static String decode(String i_ImageFile ,String i_Character)
     {
-        return decode(i_BarcodeFormat ,new File(i_ImageFile) ,i_Character);
+        return decode(new File(i_ImageFile) ,i_Character);
     }
     
     
@@ -354,13 +352,12 @@ public final class ZXingHelp
      * @createDate  2017-09-29
      * @version     v1.0
      *
-     * @param i_BarcodeFormat  二维码、条形码的编码格式
      * @param i_ImageFile      二维码、条形码的文件
      * @return
      */
-    public final static String decode(BarcodeFormat i_BarcodeFormat ,File i_ImageFile)
+    public final static String decode(File i_ImageFile)
     {
-        return decode(i_BarcodeFormat ,i_ImageFile ,$DefaultCharacter);
+        return decode(i_ImageFile ,$DefaultCharacter);
     }
     
     
@@ -372,16 +369,15 @@ public final class ZXingHelp
      * @createDate  2017-09-29
      * @version     v1.0
      *
-     * @param i_BarcodeFormat  二维码、条形码的编码格式
      * @param i_ImageFile      二维码、条形码的文件
      * @param i_Character      字符格式
      * @return
      */
-    public final static String decode(BarcodeFormat i_BarcodeFormat ,File i_ImageFile ,String i_Character)
+    public final static String decode(File i_ImageFile ,String i_Character)
     {
         try
         {
-            return decode(i_BarcodeFormat ,ImageIO.read(i_ImageFile) ,$DefaultCharacter);
+            return decode(ImageIO.read(i_ImageFile) ,$DefaultCharacter);
         }
         catch (Exception exce)
         {
@@ -400,14 +396,13 @@ public final class ZXingHelp
      * @createDate  2017-09-29
      * @version     v1.0
      *
-     * @param i_BarcodeFormat  二维码、条形码的编码格式
      * @param i_ImageFile      二维码、条形码的文件
      * @param i_Character      字符格式
      * @return
      */
-    public final static String decode(BarcodeFormat i_BarcodeFormat ,InputStream i_ImageFile)
+    public final static String decode(InputStream i_ImageFile)
     {
-        return decode(i_BarcodeFormat ,i_ImageFile ,$DefaultCharacter);
+        return decode(i_ImageFile ,$DefaultCharacter);
     }
     
     
@@ -419,16 +414,15 @@ public final class ZXingHelp
      * @createDate  2017-09-29
      * @version     v1.0
      *
-     * @param i_BarcodeFormat  二维码、条形码的编码格式
      * @param i_ImageFile      二维码、条形码的文件
      * @param i_Character      字符格式
      * @return
      */
-    public final static String decode(BarcodeFormat i_BarcodeFormat ,InputStream i_ImageFile ,String i_Character)
+    public final static String decode(InputStream i_ImageFile ,String i_Character)
     {
         try
         {
-            return decode(i_BarcodeFormat ,ImageIO.read(i_ImageFile) ,$DefaultCharacter);
+            return decode(ImageIO.read(i_ImageFile) ,$DefaultCharacter);
         }
         catch (Exception exce)
         {
@@ -447,12 +441,11 @@ public final class ZXingHelp
      * @createDate  2017-09-29
      * @version     v1.0
      *
-     * @param i_BarcodeFormat  二维码、条形码的编码格式
      * @param i_ImageFile      二维码、条形码的文件
      * @param i_Character      字符格式
      * @return
      */
-    public final static String decode(BarcodeFormat i_BarcodeFormat ,BufferedImage i_ImageFile ,String i_Character)
+    public final static String decode(BufferedImage i_ImageFile ,String i_Character)
     {
         try
         {

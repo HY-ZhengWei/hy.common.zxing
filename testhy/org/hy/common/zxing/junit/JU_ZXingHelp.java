@@ -49,8 +49,8 @@ public class JU_ZXingHelp
     @Test  
     public void test002_Decode()
     {
-        System.out.println("encode： " + ZXingHelp.decode(BarcodeFormat.QR_CODE  ,"/Users/hy/Downloads/zxing2D.png"));
-        System.out.println("encode： " + ZXingHelp.decode(BarcodeFormat.CODE_128 ,"/Users/hy/Downloads/zxing1D.png"));
+        System.out.println("识别二维码：" + ZXingHelp.decode("/Users/hy/Downloads/zxing2D.png"));
+        System.out.println("识别条形码：" + ZXingHelp.decode("/Users/hy/Downloads/zxing1D.png"));
     }
     
 }  
