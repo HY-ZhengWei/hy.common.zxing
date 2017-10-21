@@ -23,6 +23,9 @@ import com.google.zxing.common.CharacterSetECI;
 import com.google.zxing.common.DecoderResult;
 import com.google.zxing.common.StringUtils;
 
+import org.hy.common.ByteHelp;
+import org.hy.common.zxing.ZXingHelp;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -55,10 +58,11 @@ final class DecodedBitStreamParser {
                               Map<DecodeHintType,?> hints) throws FormatException {
     BitSource bits = new BitSource(bytes);
     StringBuilder result = new StringBuilder(50);
+    StringBuilder v_ResultHexs = new StringBuilder();
     List<byte[]> byteSegments = new ArrayList<>(1);
     int symbolSequence = -1;
     int parityData = -1;
-
+    
     try {
       CharacterSetECI currentCharacterSetECI = null;
       boolean fc1InEffect = false;
@@ -117,7 +121,7 @@ final class DecodedBitStreamParser {
                 decodeAlphanumericSegment(bits, result, count, fc1InEffect);
                 break;
               case BYTE:
-                decodeByteSegment(bits, result, count, currentCharacterSetECI, byteSegments, hints);
+                decodeByteSegment(bits, result ,v_ResultHexs , count, currentCharacterSetECI, byteSegments, hints);
                 break;
               case KANJI:
                 decodeKanjiSegment(bits, result, count);
@@ -134,7 +138,7 @@ final class DecodedBitStreamParser {
     }
 
     return new DecoderResult(bytes,
-                             result.toString(),
+                             result.toString() + ZXingHelp.$DecodeBytesSplite + v_ResultHexs.toString(),
                              byteSegments.isEmpty() ? null : byteSegments,
                              ecLevel == null ? null : ecLevel.toString(),
                              symbolSequence,
@@ -218,6 +222,7 @@ final class DecodedBitStreamParser {
 
   private static void decodeByteSegment(BitSource bits,
                                         StringBuilder result,
+                                        StringBuilder io_ResultHexs,
                                         int count,
                                         CharacterSetECI currentCharacterSetECI,
                                         Collection<byte[]> byteSegments,
@@ -244,6 +249,8 @@ final class DecodedBitStreamParser {
     }
     try {
       result.append(new String(readBytes, encoding));
+      // ZhengWei (HY) Add 2017-10-21 将二进制的原始编码结果也返回出去
+      io_ResultHexs.append(ByteHelp.bytesToHex(readBytes));
     } catch (UnsupportedEncodingException ignored) {
       throw FormatException.getFormatInstance();
     }

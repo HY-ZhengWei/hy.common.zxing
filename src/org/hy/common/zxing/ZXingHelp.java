@@ -40,13 +40,16 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 public final class ZXingHelp
 {
     
-    public final static String               $DefaultCharacter            = "UTF-8";
+    public  final static String               $DefaultCharacter            = "UTF-8";
     
     /** 默认生成的图片类型 */
-    public final static String               $DefaultImageFormat          = "png";
+    public  final static String               $DefaultImageFormat          = "png";
     
     /** 默认生成的容错级别 */
-    public final static ErrorCorrectionLevel $DefaultErrorCorrectionLevel = ErrorCorrectionLevel.M;
+    public  final static ErrorCorrectionLevel $DefaultErrorCorrectionLevel = ErrorCorrectionLevel.M;
+    
+    /** 二维码识别后的原始十六进制数据的分割符。如：二维码字符 + $DecodeBytesSplite + 二维码十六进制数据 */
+    public  final static String               $DecodeBytesSplite           = "_@HY@_";
     
     
     
