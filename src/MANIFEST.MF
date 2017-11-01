@@ -1,5 +1,5 @@
 Manifest-Version: 3.3.1
 Created-By: google  2017
-Specification-Version: 3.3.1  2017-10-21
+Specification-Version: 3.3.1  2017-11-01
 SourceCode: https://github.com/zxing/zxing
 SourceCode: https://github.com/HY-ZhengWei/hy.common.zxing

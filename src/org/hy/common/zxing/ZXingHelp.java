@@ -36,6 +36,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  * @author      ZhengWei(HY)
  * @createDate  2017-09-29
  * @version     v1.0
+ *              v2.0  添加：对encodeTo...(...)的系列方法添加i_CharEncoding参数，使外部可自行设定字符集编码。
  */
 public final class ZXingHelp
 {
@@ -72,7 +73,7 @@ public final class ZXingHelp
      * @param i_ErrorCorrectionLevel
      * @return
      */
-    public final static Map<EncodeHintType ,Object> getEncodeHints(ErrorCorrectionLevel i_ErrorCorrectionLevel)
+    public final static Map<EncodeHintType ,Object> getEncodeHints(ErrorCorrectionLevel i_ErrorCorrectionLevel ,String i_Char)
     {
         Map<EncodeHintType ,Object> v_Hints = new HashMap<EncodeHintType ,Object>(2);
         
@@ -107,7 +108,29 @@ public final class ZXingHelp
      */
     public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,String i_SaveFile ,String i_Text ,int i_ImageWidth ,int i_ImageHeight)
     {
-        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,$DefaultErrorCorrectionLevel ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,$DefaultErrorCorrectionLevel ,$DefaultCharacter ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+    }
+    
+    
+    
+    /**
+     * 生成二维码，并保存成文件
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2017-11-01
+     * @version     v1.0
+     *
+     * @param i_BarcodeFormat         二维码、条形码的编码格式
+     * @param i_SaveFile              文件路径
+     * @param i_Text                  二维码的文本内容
+     * @param i_CharEncoding          字符集编码。如，UTF-8、GBK
+     * @param i_ImageWidth            生成二维码图片的宽度
+     * @param i_ImageHeight           生成二维码图片的高度
+     * @return
+     */
+    public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,String i_SaveFile ,String i_Text ,String i_CharEncoding ,int i_ImageWidth ,int i_ImageHeight)
+    {
+        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,$DefaultErrorCorrectionLevel ,i_CharEncoding ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
     }
     
     
@@ -129,7 +152,30 @@ public final class ZXingHelp
      */
     public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,String i_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,int i_ImageWidth ,int i_ImageHeight)
     {
-        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,i_ErrorCorrectionLevel ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,i_ErrorCorrectionLevel ,$DefaultCharacter ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+    }
+    
+    
+    
+    /**
+     * 生成二维码，并保存成文件
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2017-11-01
+     * @version     v1.0
+     *
+     * @param i_BarcodeFormat         二维码、条形码的编码格式
+     * @param i_SaveFile              文件路径
+     * @param i_Text                  二维码的文本内容
+     * @param i_ErrorCorrectionLevel  容错级别
+     * @param i_CharEncoding          字符集编码。如，UTF-8、GBK
+     * @param i_ImageWidth            生成二维码图片的宽度
+     * @param i_ImageHeight           生成二维码图片的高度
+     * @return
+     */
+    public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,String i_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,String i_CharEncoding ,int i_ImageWidth ,int i_ImageHeight)
+    {
+        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,i_ErrorCorrectionLevel ,i_CharEncoding ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
     }
     
     
@@ -152,7 +198,31 @@ public final class ZXingHelp
      */
     public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,String i_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,int i_ImageWidth ,int i_ImageHeight ,String i_ImageFormat)
     {
-        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,i_ErrorCorrectionLevel ,i_ImageWidth ,i_ImageHeight ,i_ImageFormat);
+        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,i_ErrorCorrectionLevel ,$DefaultCharacter ,i_ImageWidth ,i_ImageHeight ,i_ImageFormat);
+    }
+    
+    
+    
+    /**
+     * 生成二维码，并保存成文件
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2017-11-01
+     * @version     v1.0
+     *
+     * @param i_BarcodeFormat         二维码、条形码的编码格式
+     * @param i_SaveFile              文件路径
+     * @param i_Text                  二维码的文本内容
+     * @param i_ErrorCorrectionLevel  容错级别
+     * @param i_CharEncoding          字符集编码。如，UTF-8、GBK
+     * @param i_ImageWidth            生成二维码图片的宽度
+     * @param i_ImageHeight           生成二维码图片的高度
+     * @param i_ImageFormat           生成二维码图片的格式(png、jpg)
+     * @return
+     */
+    public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,String i_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,String i_CharEncoding ,int i_ImageWidth ,int i_ImageHeight ,String i_ImageFormat)
+    {
+        return encodeToFile(i_BarcodeFormat ,new File(i_SaveFile) ,i_Text ,i_ErrorCorrectionLevel ,i_CharEncoding ,i_ImageWidth ,i_ImageHeight ,i_ImageFormat);
     }
     
     
@@ -173,7 +243,29 @@ public final class ZXingHelp
      */
     public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,File i_SaveFile ,String i_Text ,int i_ImageWidth ,int i_ImageHeight)
     {
-        return encodeToFile(i_BarcodeFormat ,i_SaveFile ,i_Text ,$DefaultErrorCorrectionLevel ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+        return encodeToFile(i_BarcodeFormat ,i_SaveFile ,i_Text ,$DefaultErrorCorrectionLevel ,$DefaultCharacter ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+    }
+    
+    
+    
+    /**
+     * 生成二维码，并保存成文件
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2017-11-01
+     * @version     v1.0
+     *
+     * @param i_BarcodeFormat         二维码、条形码的编码格式
+     * @param i_SaveFile              文件路径
+     * @param i_Text                  二维码的文本内容
+     * @param i_CharEncoding          字符集编码。如，UTF-8、GBK
+     * @param i_ImageWidth            生成二维码图片的宽度
+     * @param i_ImageHeight           生成二维码图片的高度
+     * @return
+     */
+    public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,File i_SaveFile ,String i_Text ,String i_CharEncoding ,int i_ImageWidth ,int i_ImageHeight)
+    {
+        return encodeToFile(i_BarcodeFormat ,i_SaveFile ,i_Text ,$DefaultErrorCorrectionLevel ,i_CharEncoding ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
     }
     
     
@@ -195,7 +287,30 @@ public final class ZXingHelp
      */
     public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,File i_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,int i_ImageWidth ,int i_ImageHeight)
     {
-        return encodeToFile(i_BarcodeFormat ,i_SaveFile ,i_Text ,i_ErrorCorrectionLevel ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+        return encodeToFile(i_BarcodeFormat ,i_SaveFile ,i_Text ,i_ErrorCorrectionLevel ,$DefaultCharacter ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+    }
+    
+    
+    
+    /**
+     * 生成二维码，并保存成文件
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2017-11-01
+     * @version     v1.0
+     *
+     * @param i_BarcodeFormat         二维码、条形码的编码格式
+     * @param i_SaveFile              文件路径
+     * @param i_Text                  二维码的文本内容
+     * @param i_ErrorCorrectionLevel  容错级别
+     * @param i_CharEncoding          字符集编码。如，UTF-8、GBK
+     * @param i_ImageWidth            生成二维码图片的宽度
+     * @param i_ImageHeight           生成二维码图片的高度
+     * @return
+     */
+    public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,File i_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,String i_CharEncoding ,int i_ImageWidth ,int i_ImageHeight)
+    {
+        return encodeToFile(i_BarcodeFormat ,i_SaveFile ,i_Text ,i_ErrorCorrectionLevel ,i_CharEncoding ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
     }
     
     
@@ -211,16 +326,17 @@ public final class ZXingHelp
      * @param i_SaveFile              文件路径
      * @param i_Text                  二维码的文本内容
      * @param i_ErrorCorrectionLevel  容错级别
+     * @param i_CharEncoding          字符集编码。如，UTF-8、GBK
      * @param i_ImageWidth            生成二维码图片的宽度
      * @param i_ImageHeight           生成二维码图片的高度
      * @param i_ImageFormat           生成二维码图片的格式(png、jpg)
      * @return
      */
-    public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,File i_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,int i_ImageWidth ,int i_ImageHeight ,String i_ImageFormat)
+    public final static File encodeToFile(BarcodeFormat i_BarcodeFormat ,File i_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,String i_CharEncoding ,int i_ImageWidth ,int i_ImageHeight ,String i_ImageFormat)
     {
         try
         {
-            BitMatrix v_BitMatrix = new MultiFormatWriter().encode(i_Text ,i_BarcodeFormat ,i_ImageWidth ,i_ImageHeight ,getEncodeHints(i_ErrorCorrectionLevel));
+            BitMatrix v_BitMatrix = new MultiFormatWriter().encode(i_Text ,i_BarcodeFormat ,i_ImageWidth ,i_ImageHeight ,getEncodeHints(i_ErrorCorrectionLevel ,i_CharEncoding));
             Path      v_Path      = FileSystems.getDefault().getPath(i_SaveFile.getParent() ,i_SaveFile.getName());
             
             MatrixToImageWriter.writeToPath(v_BitMatrix ,i_ImageFormat ,v_Path);
@@ -254,7 +370,7 @@ public final class ZXingHelp
      */
     public final static void encodeToStream(BarcodeFormat i_BarcodeFormat ,OutputStream io_SaveFile ,String i_Text ,int i_ImageWidth ,int i_ImageHeight)
     {
-        encodeToStream(i_BarcodeFormat ,io_SaveFile ,i_Text ,$DefaultErrorCorrectionLevel ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+        encodeToStream(i_BarcodeFormat ,io_SaveFile ,i_Text ,$DefaultErrorCorrectionLevel ,$DefaultCharacter ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
     }
     
     
@@ -276,7 +392,30 @@ public final class ZXingHelp
      */
     public final static void encodeToStream(BarcodeFormat i_BarcodeFormat ,OutputStream io_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,int i_ImageWidth ,int i_ImageHeight)
     {
-        encodeToStream(i_BarcodeFormat ,io_SaveFile ,i_Text ,i_ErrorCorrectionLevel ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+        encodeToStream(i_BarcodeFormat ,io_SaveFile ,i_Text ,i_ErrorCorrectionLevel ,$DefaultCharacter ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
+    }
+    
+    
+    
+    /**
+     * 生成二维码，并写到IO流中
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2017-11-01
+     * @version     v1.0
+     *
+     * @param i_BarcodeFormat         二维码、条形码的编码格式
+     * @param i_SaveFile              文件的IO流
+     * @param i_Text                  二维码的文本内容
+     * @param i_ErrorCorrectionLevel  容错级别
+     * @param i_CharEncoding          字符集编码。如，UTF-8、GBK
+     * @param i_ImageWidth            生成二维码图片的宽度
+     * @param i_ImageHeight           生成二维码图片的高度
+     * @return
+     */
+    public final static void encodeToStream(BarcodeFormat i_BarcodeFormat ,OutputStream io_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,String i_CharEncoding ,int i_ImageWidth ,int i_ImageHeight)
+    {
+        encodeToStream(i_BarcodeFormat ,io_SaveFile ,i_Text ,i_ErrorCorrectionLevel ,i_CharEncoding ,i_ImageWidth ,i_ImageHeight ,$DefaultImageFormat);
     }
     
     
@@ -292,16 +431,17 @@ public final class ZXingHelp
      * @param i_SaveFile              文件的IO流
      * @param i_Text                  二维码的文本内容
      * @param i_ErrorCorrectionLevel  容错级别
+     * @param i_CharEncoding          字符集编码。如，UTF-8、GBK
      * @param i_ImageWidth            生成二维码图片的宽度
      * @param i_ImageHeight           生成二维码图片的高度
      * @param i_ImageFormat           生成二维码图片的格式(png、jpg)
      * @return
      */
-    public final static void encodeToStream(BarcodeFormat i_BarcodeFormat ,OutputStream io_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,int i_ImageWidth ,int i_ImageHeight ,String i_ImageFormat)
+    public final static void encodeToStream(BarcodeFormat i_BarcodeFormat ,OutputStream io_SaveFile ,String i_Text ,ErrorCorrectionLevel i_ErrorCorrectionLevel ,String i_CharEncoding ,int i_ImageWidth ,int i_ImageHeight ,String i_ImageFormat)
     {
         try
         {
-            BitMatrix v_BitMatrix = new MultiFormatWriter().encode(i_Text ,i_BarcodeFormat ,i_ImageWidth ,i_ImageHeight ,getEncodeHints(i_ErrorCorrectionLevel));
+            BitMatrix v_BitMatrix = new MultiFormatWriter().encode(i_Text ,i_BarcodeFormat ,i_ImageWidth ,i_ImageHeight ,getEncodeHints(i_ErrorCorrectionLevel ,i_CharEncoding));
             
             MatrixToImageWriter.writeToStream(v_BitMatrix ,i_ImageFormat ,io_SaveFile);
         }
@@ -338,12 +478,12 @@ public final class ZXingHelp
      * @version     v1.0
      *
      * @param i_ImageFile      二维码、条形码的文件
-     * @param i_Character      字符格式
+     * @param i_CharEncoding   字符集编码
      * @return
      */
-    public final static String decode(String i_ImageFile ,String i_Character)
+    public final static String decode(String i_ImageFile ,String i_CharEncoding)
     {
-        return decode(new File(i_ImageFile) ,i_Character);
+        return decode(new File(i_ImageFile) ,i_CharEncoding);
     }
     
     
@@ -373,10 +513,10 @@ public final class ZXingHelp
      * @version     v1.0
      *
      * @param i_ImageFile      二维码、条形码的文件
-     * @param i_Character      字符格式
+     * @param i_CharEncoding   字符集编码
      * @return
      */
-    public final static String decode(File i_ImageFile ,String i_Character)
+    public final static String decode(File i_ImageFile ,String i_CharEncoding)
     {
         try
         {
@@ -400,7 +540,6 @@ public final class ZXingHelp
      * @version     v1.0
      *
      * @param i_ImageFile      二维码、条形码的文件
-     * @param i_Character      字符格式
      * @return
      */
     public final static String decode(InputStream i_ImageFile)
@@ -418,10 +557,10 @@ public final class ZXingHelp
      * @version     v1.0
      *
      * @param i_ImageFile      二维码、条形码的文件
-     * @param i_Character      字符格式
+     * @param i_CharEncoding   字符集编码
      * @return
      */
-    public final static String decode(InputStream i_ImageFile ,String i_Character)
+    public final static String decode(InputStream i_ImageFile ,String i_CharEncoding)
     {
         try
         {
@@ -445,10 +584,10 @@ public final class ZXingHelp
      * @version     v1.0
      *
      * @param i_ImageFile      二维码、条形码的文件
-     * @param i_Character      字符格式
+     * @param i_CharEncoding   字符集编码
      * @return
      */
-    public final static String decode(BufferedImage i_ImageFile ,String i_Character)
+    public final static String decode(BufferedImage i_ImageFile ,String i_CharEncoding)
     {
         try
         {
@@ -457,7 +596,7 @@ public final class ZXingHelp
             BinaryBitmap                v_BinaryBitmap = new BinaryBitmap(v_Binarizer);
             Map<DecodeHintType ,Object> v_Hints        = new HashMap<DecodeHintType ,Object>();
             
-            v_Hints.put(DecodeHintType.CHARACTER_SET ,i_Character);
+            v_Hints.put(DecodeHintType.CHARACTER_SET ,i_CharEncoding);
             
             Result v_Result = new MultiFormatReader().decode(v_BinaryBitmap ,v_Hints);
             
