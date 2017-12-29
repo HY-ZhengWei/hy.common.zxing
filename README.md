@@ -1,4 +1,4 @@
-# hy.common.base
+# hy.common.zxing
 
 
 
