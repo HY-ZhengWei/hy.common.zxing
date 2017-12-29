@@ -5,9 +5,9 @@ cd .\bin
 rd /s/q .\org\hy\common\zxing\junit
 
 
-jar cvfm zxing.jar MANIFEST.MF com org
+jar cvfm hy.common.zxing.jar MANIFEST.MF META-INF com org
 
-copy zxing.jar ..
-del /q zxing.jar
+copy hy.common.zxing.jar ..
+del /q hy.common.zxing.jar
 cd ..
 
