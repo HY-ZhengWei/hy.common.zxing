@@ -35,8 +35,8 @@ public class JU_ZXingHelp
     @Test  
     public void test001_Encode() throws WriterException ,IOException
     {
-        ZXingHelp.encodeToFile(BarcodeFormat.QR_CODE  ,"/Users/hy/Downloads/zxing2D.png" ,"http://www.baidu.com" ,300 ,300);
-        ZXingHelp.encodeToFile(BarcodeFormat.CODE_128 ,"/Users/hy/Downloads/zxing1D.png" ,"Abc1234567890"        ,200 ,50);
+        ZXingHelp.encodeToFile(BarcodeFormat.QR_CODE  ,"C:\\Users\\ZhengWei\\Desktop\\zxing2D.png" ,"http://www.baidu.com" ,300 ,300);
+        ZXingHelp.encodeToFile(BarcodeFormat.CODE_128 ,"C:\\Users\\ZhengWei\\Desktop\\zxing1D.png" ,"Abc1234567890"        ,200 ,50);
         
         System.out.println("输出成功.");
     }
